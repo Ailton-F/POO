@@ -168,3 +168,62 @@ class MaquinaDeEscrever:
         print('Máquina escrevendo.......')
 
 #Aula 8 - Agregação
+class CarrinhoDeCompras:
+    def __init__(self):
+        self.produtos = []
+
+    def inserirProduto(self, produto):
+        self.produtos.append(produto)
+
+    def listaProdutos(self):
+        for p in self.produtos:
+            print(p.nome, p.valor)
+
+    def tsum(self):
+        sumt = 0
+        for p in self.produtos:
+            sumt += p.valor
+        return sumt
+
+
+class Produtos:
+    def __init__(self, nome, valor):
+        self.nome = nome
+        self.valor = valor
+
+#Aula 9 - Composição
+class Cliente:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+        self.endrecos = []
+
+    def insere_enreco(self, cidade, estado):
+        self.endrecos.append(Endereco(cidade, estado))
+
+    def lista_endereco(self):
+        for e in self.endrecos:
+            print(e.cidade, e.estado)
+
+class Endereco:
+    def __init__(self, cidade, estado):
+        self.cidade = cidade
+        self.estado = estado
+
+#Aula 10 - Herança
+class People:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+        self.classname = self.__class__.__name__
+
+    def falar(self):
+        print(f'{self.classname} Falando....')
+
+class Client(People):
+    def comprar(self):
+        print('Comprando')
+
+class Aluno(People):
+    def estudar(self):
+        print('Estudando')
